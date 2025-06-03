@@ -387,6 +387,10 @@ export class MemStorage implements IStorage {
     const request: CollaborationRequest = { 
       ...insertRequest, 
       id,
+      fromCreativeId: insertRequest.fromCreativeId || null,
+      toCreativeId: insertRequest.toCreativeId || null,
+      budgetRange: insertRequest.budgetRange || null,
+      timeline: insertRequest.timeline || null,
       status: "pending",
       createdAt: new Date(),
       respondedAt: null
@@ -420,13 +424,18 @@ export class MemStorage implements IStorage {
     const review: CreativeReview = { 
       ...insertReview, 
       id,
+      creativeId: insertReview.creativeId || null,
+      projectType: insertReview.projectType || null,
+      reviewText: insertReview.reviewText || null,
       isVerified: false,
       createdAt: new Date()
     };
     this.creativeReviews.set(id, review);
     
     // Update creative profile rating
-    await this.updateCreativeRating(insertReview.creativeId);
+    if (review.creativeId) {
+      await this.updateCreativeRating(review.creativeId);
+    }
     
     return review;
   }
@@ -455,7 +464,11 @@ export class MemStorage implements IStorage {
 
   async createService(insertService: InsertService): Promise<Service> {
     const id = this.currentServiceId++;
-    const service: Service = { ...insertService, id };
+    const service: Service = { 
+      ...insertService, 
+      id,
+      priceMax: insertService.priceMax || null
+    };
     this.services.set(id, service);
     return service;
   }
@@ -474,6 +487,10 @@ export class MemStorage implements IStorage {
     const booking: Booking = { 
       ...insertBooking, 
       id, 
+      phone: insertBooking.phone || null,
+      serviceId: insertBooking.serviceId || null,
+      preferredDate: insertBooking.preferredDate || null,
+      message: insertBooking.message || null,
       status: "pending",
       createdAt: new Date()
     };

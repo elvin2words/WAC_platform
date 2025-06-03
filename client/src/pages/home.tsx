@@ -1,10 +1,12 @@
 import { Navigation } from "@/components/navigation";
 import { HeroSection } from "@/components/hero-section";
 import { PortfolioGrid } from "@/components/portfolio-grid";
+import { CreativesSection } from "@/components/creatives-section";
 import { ServicesSection } from "@/components/services-section";
 import { AboutSection } from "@/components/about-section";
 import { ContactSection } from "@/components/contact-section";
-import { Calendar } from "lucide-react";
+import { PortfolioSubmissionForm } from "@/components/portfolio-submission-form";
+import { Calendar, Upload } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export default function Home() {
@@ -20,6 +22,7 @@ export default function Home() {
       <Navigation />
       <HeroSection />
       <PortfolioGrid />
+      <CreativesSection />
       <ServicesSection />
       <AboutSection />
       <ContactSection />
@@ -39,8 +42,9 @@ export default function Home() {
         </div>
       </footer>
       
-      {/* Floating Action Button */}
-      <div className="fixed bottom-6 right-6 z-40">
+      {/* Floating Action Buttons */}
+      <div className="fixed bottom-6 right-6 z-40 flex flex-col gap-3">
+        <PortfolioSubmissionForm />
         <Button
           onClick={scrollToContact}
           size="icon"

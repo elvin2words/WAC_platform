@@ -91,6 +91,12 @@ export function Navigation() {
                 Portfolio
               </button>
               <button
+                onClick={() => scrollToSection('creatives')}
+                className="hover:text-neon-purple transition-colors duration-300 py-2"
+              >
+                Creatives
+              </button>
+              <button
                 onClick={() => scrollToSection('services')}
                 className="hover:text-neon-blue transition-colors duration-300 py-2"
               >

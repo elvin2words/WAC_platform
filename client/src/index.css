@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+
+  /* Custom neon colors */
+  --neon-blue: 185 100% 50%;
+  --neon-pink: 300 100% 50%;
+  --neon-purple: 275 80% 60%;
+  --neon-green: 150 100% 50%;
+  --dark-primary: 0 0% 4%;
+  --dark-secondary: 0 0% 10%;
+  --dark-tertiary: 0 0% 16%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-[hsl(var(--dark-primary))] text-foreground overflow-x-hidden;
+  }
+}
+
+@layer utilities {
+  .neon-blue {
+    color: hsl(var(--neon-blue));
+  }
+  
+  .neon-pink {
+    color: hsl(var(--neon-pink));
+  }
+  
+  .neon-purple {
+    color: hsl(var(--neon-purple));
+  }
+  
+  .neon-green {
+    color: hsl(var(--neon-green));
+  }
+  
+  .bg-neon-blue {
+    background-color: hsl(var(--neon-blue));
+  }
+  
+  .bg-neon-pink {
+    background-color: hsl(var(--neon-pink));
+  }
+  
+  .bg-neon-purple {
+    background-color: hsl(var(--neon-purple));
+  }
+  
+  .bg-dark-primary {
+    background-color: hsl(var(--dark-primary));
+  }
+  
+  .bg-dark-secondary {
+    background-color: hsl(var(--dark-secondary));
+  }
+  
+  .bg-dark-tertiary {
+    background-color: hsl(var(--dark-tertiary));
+  }
+  
+  .border-neon-blue {
+    border-color: hsl(var(--neon-blue));
+  }
+  
+  .border-neon-pink {
+    border-color: hsl(var(--neon-pink));
+  }
+  
+  .border-neon-purple {
+    border-color: hsl(var(--neon-purple));
+  }
+  
+  .text-neon-blue {
+    color: hsl(var(--neon-blue));
+  }
+  
+  .text-neon-pink {
+    color: hsl(var(--neon-pink));
+  }
+  
+  .text-neon-purple {
+    color: hsl(var(--neon-purple));
+  }
+  
+  .text-neon-green {
+    color: hsl(var(--neon-green));
+  }
+
+  .gradient-text {
+    background: linear-gradient(45deg, hsl(var(--neon-blue)), hsl(var(--neon-pink)), hsl(var(--neon-purple)));
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease infinite;
+  }
+
+  .neon-text {
+    text-shadow: 0 0 10px hsl(var(--neon-blue) / 0.8);
+  }
+
+  .neon-glow {
+    box-shadow: 0 0 10px hsl(var(--neon-blue) / 0.5);
+  }
+
+  .glass-effect {
+    backdrop-filter: blur(10px);
+    background: hsl(var(--dark-secondary) / 0.8);
+    border: 1px solid hsl(0 0% 100% / 0.1);
+  }
+}
+
+@keyframes gradient-shift {
+  0%, 100% { 
+    background-position: 0% 50%; 
+  }
+  50% { 
+    background-position: 100% 50%; 
+  }
+}
+
+@keyframes neon-pulse {
+  from { 
+    box-shadow: 0 0 5px hsl(var(--neon-blue)), 0 0 10px hsl(var(--neon-blue)), 0 0 15px hsl(var(--neon-blue)); 
+  }
+  to { 
+    box-shadow: 0 0 10px hsl(var(--neon-blue)), 0 0 20px hsl(var(--neon-blue)), 0 0 30px hsl(var(--neon-blue)); 
+  }
+}
+
+@keyframes float {
+  0%, 100% { 
+    transform: translateY(0px); 
+  }
+  50% { 
+    transform: translateY(-10px); 
+  }
+}
+
+@keyframes slide-up {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+.animate-neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite alternate;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.5s ease-out;
+}
